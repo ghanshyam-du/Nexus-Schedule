@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus-ai-agent
+  namespace: nexus-schedule
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nexus-ai-agent
+  template:
+    metadata:
+      labels:
+        app: nexus-ai-agent
+    spec:
+      containers:
+      - name: ai-agent
+        image: nexus-schedule/ai-agent:latest
+        ports:
+        - containerPort: 5001
